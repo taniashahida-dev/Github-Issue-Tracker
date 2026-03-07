@@ -18,28 +18,60 @@
  <link rel="stylesheet" href="./tailwind.css">
  
 </head>
-<body>
+<body class="bg-gray-100">
     
 <header>
-    <div class="navbar bg-base-100 shadow-sm">
-  <div class="flex-1">
-    <a class="btn btn-ghost text-xl">daisyUI</a>
+    <div class="navbar bg-base-100 shadow-sm justify-between">
+  <div class="flex gap-2 items-center justify-center">
+     <img class="w-10 h-10" src="./assets/github-logo.png" alt="">
+    <p class=" text-2xl font-bold">GitHub Issues Tracker</p>
   </div>
-  <div class="flex gap-2">
-    <input type="text" placeholder="Search" class="input input-bordered w-24 md:w-auto" />
-    <div class="dropdown dropdown-end">
-      <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
-        <div class="w-full rounded">
-          <button class="btn btn-primary">+New Issue</button>
-        </div>
-      </div>
-    
-    </div>
+<div class="join">
+  <div>
+   <div class="join">
+  <div>
+    <label class="input validator join-item">
+      <input type="text" placeholder="Search issues" />
+    </label>
   </div>
+  <button class="btn btn-primary join-item text-white">+New issue</button>
+</div>
 </div>
 </header>
+<main class="w-10/12 mx-auto ">
+  <section class="gap-10  mt-24 p-4 shadow-sm shadow-gray-400  bg-white">
+    <button class="btn px-8 btn-primary">All</button>
+    <button class="btn px-8 ">Open</button>
+    <button class="btn px-8 ">Close</button>
+  </section>
 
-<main class="w-10/12">
+<section>
+  <div class="flex justify-between bg-white shadow-sm shadow-gray-400 p-4 items-center mt-4">
+    <div class="flex justify-between gap-5 ">
+      <img class="w-14 border border-[#4A00FF] rounded-full" src="./assets/Aperture.png" alt="">
+      <div class="">
+        <h1 class="text-3xl font-bold">50 Issues</h1>
+        <p class="text-gray-600 w-4xl">Track and manage your project issues</p>
+      </div>
+    </div>
+    <div class="flex gap-2">
+<div>
+  <p><span class="inline-block w-3 h-3 bg-green-500 rounded-full"> </span> Open</p>
+</div>
+<div>
+  <p><span class="inline-block w-3 h-3 bg-purple-500 rounded-full"> </span> Closed</p>
+</div>
+    </div>
+  </div>
+
+
+
+  <div class="bg-gray-50 p-2 grid grid-cols-4" id="issue-container">
+     
+
+
+  </div>
+</section>
 
 </main>
 
