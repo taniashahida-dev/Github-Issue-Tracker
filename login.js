@@ -14,7 +14,7 @@ if (userName !== 'admin') {
     return
 }else{
     alert('Signin Successfull!!!!')
-    window.location.assign("/issuepage.html")
+    window.location.assign("./home.html")
 }
 
 })
