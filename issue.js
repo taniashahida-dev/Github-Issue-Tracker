@@ -1,20 +1,29 @@
 // ...............Issue page functionality..................
-
+const spinner = document.getElementById('spinner')
 const issueContainer = document.getElementById("issue-container");
 
+const showSpinner =()=>{
+  spinner.classList.remove('hidden')
+}
+const hideSpinner =()=>{
+  spinner.classList.add('hidden')
+}
+
 const loadIssue = () => {
+  showSpinner()
   const url = "https://phi-lab-server.vercel.app/api/v1/lab/issues";
   fetch(url)
     .then((res) => res.json())
     .then((issue) => {
       console.log(issue.data);
       displayIssue(issue.data);
+      hideSpinner()
     });
 };
 const displayIssue = (allIssue) => {
   issueContainer.innerHTML = "";
 
-  allIssue.forEach((cards) => {
+  allIssue.forEach((cards) =>{
     const card = document.createElement("div");
     card.className = `
         max-w-sm bg-white rounded-xl shadow-md p-5 border-t-4 ${cards.priority === "high" || cards.priority === "medium" ? "border-green-500" : "border-red-500"}
@@ -25,7 +34,7 @@ const displayIssue = (allIssue) => {
   <div class="flex justify-between items-center mb-4">
     
 
-    <div class="w-10 h-10 flex items-center justify-center rounded-full  ${cards.priority === "low" ? "bg-red-100": "bg-green-100" } ">
+    <div class="w-10 h-10 flex items-center justify-center rounded-full  ${cards.priority === "low" ? "bg-red-100": "bg-green-100" }">
     ${cards.priority === "high" || cards.priority === "medium" ? '<img class="w-8" src="./assets/Open-Status.png" alt="open">':'<img src="./assets/Closed- Status .png" alt="closed">'}
       
     </div>
@@ -68,6 +77,7 @@ const displayIssue = (allIssue) => {
     `;
 
     issueContainer.appendChild(card);
+  
   });
 };
 loadIssue();
