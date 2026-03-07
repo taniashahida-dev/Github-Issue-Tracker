@@ -1,4 +1,4 @@
-// ........login page functionality......
+
 const signInBTN =document.getElementById('signin-btn')
 const userInput = document.getElementById('input-user')
 const passwordInput = document.getElementById('inpur-password')
