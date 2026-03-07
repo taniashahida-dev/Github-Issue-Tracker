@@ -25,8 +25,9 @@ const displayIssue = (allIssue) => {
   <div class="flex justify-between items-center mb-4">
     
 
-    <div class="w-10 h-10 flex items-center justify-center bg-green-100 rounded-full">
-      <img class="w-8" src="./assets/Open-Status.png" alt="">
+    <div class="w-10 h-10 flex items-center justify-center rounded-full  ${cards.priority === "low" ? "bg-red-100": "bg-green-100" } ">
+    ${cards.priority === "high" || cards.priority === "medium" ? '<img class="w-8" src="./assets/Open-Status.png" alt="open">':'<img src="./assets/Closed- Status .png" alt="closed">'}
+      
     </div>
     <span class=" text-sm px-4 py-1 rounded-full font-semibold ${cards.priority === "high" ? "text-red-500 bg-red-100" : 
         cards.priority === "medium" ? "text-orange-500 bg-orange-100" : 
