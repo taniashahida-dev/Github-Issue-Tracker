@@ -1,8 +1,6 @@
 // ........login page functionality......
-const logInBTN =document.getElementById('login-btn')
-
+const signInBTN =document.getElementById('signin-btn')
 const userInput = document.getElementById('input-user')
-
 const passwordInput = document.getElementById('inpur-password')
 signInBTN.addEventListener('click',function(){
 const userName = userInput.value
@@ -15,7 +13,7 @@ if (userName !== 'admin') {
     alert('Invalid password!!!')
     return
 }else{
-    alert('Login Successfull!!!!')
+    alert('Signin Successfull!!!!')
     window.location.assign("/issuepage.html")
 }
 
