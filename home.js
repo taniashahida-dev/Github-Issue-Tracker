@@ -1,6 +1,8 @@
 const allBTN = document.getElementById('all-btn')
 const openBTN = document.getElementById('open-btn')
 const closeBTN = document.getElementById('close-btn')
+const inputBTN = document.getElementById('input-search')
+const inputText = document.getElementById('input-text')
 const spinner = document.getElementById('spinner')
 const issueContainer = document.getElementById("issue-container");
 const issueCount = document.getElementById('issue-count')
@@ -13,6 +15,28 @@ const showSpinner =()=>{
 const hideSpinner =()=>{
   spinner.classList.add('hidden')
 }
+
+const searchValue= (text)=>{
+  inputBTN.addEventListener('click',function(){
+activeButton(allBTN)
+showSpinner()
+ const inpuValue = inputText.value.trim().toLowerCase()
+
+ const url =`https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${inpuValue}`
+
+fetch(url)
+.then((res)=> res.json())
+.then((data)=> {
+  let value =  data.data
+
+  displayIssue(value)
+  hideSpinner()
+})
+})
+
+}
+ searchValue()
+
 
 function activeButton(btn){
   allBTN.classList.remove("btn-primary")
@@ -141,14 +165,17 @@ const loadIssue = () => {
       allIssue = issue.data
       displayIssue(allIssue);
       hideSpinner()
+     
     });
 };
 const displayIssue = (allIssue) => {
   issueContainer.innerHTML = "";
 
 issueCount.innerText = allIssue.length + " Issues"
+ 
   allIssue.forEach((cards) =>{
     const cardLavel = createLabels(cards.labels)
+     searchValue(cards.title)
     const card = document.createElement("div");
     card.className = ` max-w-sm bg-white rounded-xl shadow-md p-5 border-t-4 ${cards.status === "open"? "border-green-500" : "border-purple-500"}
         `;
