@@ -16,7 +16,7 @@ const hideSpinner =()=>{
   spinner.classList.add('hidden')
 }
 
-const searchValue= (text)=>{
+const searchValue= ()=>{
   inputBTN.addEventListener('click',function(){
 activeButton(allBTN)
 showSpinner()
@@ -30,8 +30,9 @@ fetch(url)
   let value =  data.data
 
   displayIssue(value)
-  hideSpinner()
+  
 })
+hideSpinner()
 })
 
 }
@@ -175,13 +176,12 @@ issueCount.innerText = allIssue.length + " Issues"
  
   allIssue.forEach((cards) =>{
     const cardLavel = createLabels(cards.labels)
-     searchValue(cards.title)
     const card = document.createElement("div");
     card.className = ` max-w-sm bg-white rounded-xl shadow-md p-5 border-t-4 ${cards.status === "open"? "border-green-500" : "border-purple-500"}
         `;
 
     card.innerHTML = `
-  <div onclick="loadModal(${cards.id})" class="flex justify-between items-center mb-4">
+  <div onclick="loadModal(${cards.id})" class="flex justify-between items-center mb-4 cursor-pointer">
     <div class="w-10 h-10 flex items-center justify-center rounded-full  ${cards.status === "closed" ? "bg-red-100": "bg-green-100" }">
     ${cards.status === "open"? '<img class="w-8" src="./assets/Open-Status.png" alt="open">':'<img src="./assets/Closed- Status .png" alt="">'}
       
@@ -192,17 +192,17 @@ issueCount.innerText = allIssue.length + " Issues"
     ${cards.priority}
     </span>
   </div>
-  <h2 class="text-lg font-bold text-gray-800 mb-2">
+  <h2 onclick="loadModal(${cards.id})" class="text-lg font-bold text-gray-800 mb-2 cursor-pointer">
     ${cards.title}
   </h2>
-  <p class="text-gray-500 text-sm mb-4 line-clamp-2">
+  <p onclick="loadModal(${cards.id})" class="text-gray-500 text-sm mb-4 line-clamp-2 ">
     ${cards.description}
   </p>
-  <div class="flex gap-3 mb-4">
+  <div onclick="loadModal(${cards.id})" class="flex gap-3 mb-4 cursor-pointer">
    ${cardLavel}
   </div>
 
-  <div class="border-t pt-3 text-sm text-gray-500">
+  <div onclick="loadModal(${cards.id})" class="border-t pt-3 text-sm text-gray-500 cursor-pointer">
     <p>#1 ${cards.author}</p>
     <p>${cards.createdAt}</p>
   </div>
